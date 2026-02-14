@@ -3,7 +3,7 @@ import { getMovieSources, getMovieSubs } from "@/app/actions/movie";
 import { getBackdropPath, tmdbClient } from "@/app/lib/tmdb";
 import { Source, Subtitle } from "@/app/lib/types";
 import { Loading } from "@/components/loading";
-import { SourcesUI } from "@/components/sources-ui";
+import SourcesUI from "@/components/sources-ui";
 import { useEffect, useState } from "react";
 import { MovieDetails } from "tmdb-ts";
 
@@ -40,7 +40,7 @@ export function MoviePage({ movie }: { movie: MovieDetails }) {
         />
       )}
 
-      <h1 className="my-10 text-center text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+      <h1 className="my-10 text-center">
         Download {title || original_title} {yearStr}
       </h1>
 
@@ -48,7 +48,7 @@ export function MoviePage({ movie }: { movie: MovieDetails }) {
         <Loading />
       ) : (
         <SourcesUI
-          title={movie.title + yearStr}
+          title={title + yearStr}
           sources={sources}
           subtitles={subtitles}
         />
